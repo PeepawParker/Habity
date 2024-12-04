@@ -1,0 +1,12 @@
+https://www.youtube.com/watch?v=dxYRbL9Se6E&ab_channel=HostingerAcademy
+You will need to get a new ssl certificate that auto renews from lets encrypt otherwise users will get warnings that the website might not be safe or something like that
+
+Get rid of all console.logs so users can't see info they shouldn't have access to
+
+in sseConnection.js change it from http to https, along with any other http
+
+scan through legit every file withe claude and have it tell you if anything isnt production ready like anything obsurdly obvious you know
+
+turn off redux dev tools in production
+
+I should add begin and rollback commands for all sql requests that do multiple sql requests

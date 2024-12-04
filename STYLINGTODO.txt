@@ -1,0 +1,9 @@
+TODO in the habitdatainput make it so that the button and placeholder scale based on the size of the window
+
+TODO make the delete button be on like the opposite side of the graph box as the submit and input box, also make it like a trashcan icon instead of delete written out
+
+TODO make toasts for like every single request that has anything to do with optimistic updating
+
+TOOD make loading bars or loading circle things to indicate that something is happening
+
+TODO make the 7d/30d/365d have like an "active" trait the distinguishes them as being active when they are the current dataset being used

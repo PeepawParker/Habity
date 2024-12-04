@@ -1,0 +1,6 @@
+1. instead of fetching the recent messages everytime store them in redux, be sure to add a fuinction for if a user accepts or messages back a message request to take it out of the request object and put it into the normal chats object
+    * Adding onto this the SSE stuff will hookup to this too to make sure that the recent messages are up to date, Maybe I just store the chatIds that I need to fetch and then when the user goes into the chatbox it fetches them all idk yet
+
+cut down on the login state changes, there is certainly a way to cut down on them somehow and group them better or something
+
+keep the recent messages stored and only replace them if they go into a different chatId from the last chatId, if they go into the same one have it only get the recentMessages not within the redux and add those to the messages you already have

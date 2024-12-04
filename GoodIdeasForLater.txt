@@ -1,0 +1,1 @@
+add a way to click on a message and have it fetch the currentReadStatus, rather than having the logic for it all just do this, it'll be much more convinient and do the same thing more or less

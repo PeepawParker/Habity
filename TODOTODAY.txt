@@ -1,0 +1,48 @@
+
+2. Time to start on making habit updates posts
+    
+    0. setup the user_posts database off the dome you'll need user_id, number of likes, number of comments, (we are going to need to have another 2 tables for post likes and post comments that will just take the post_id and then the user_id, the poster_id and then the data so either a comment or a like)
+
+    1. implement a modal form that is just going to take in all the necessary data and post it to the posts databsae
+
+    2. implement 2 tabs for the userhome page, one being the home page with just the charts of the habits and then the second being a list of all the posts just have like a navbar within this page basically which will rewire what it shown but stay on the same page, I think probably wont affect the url it will just affect what is rendered.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+1. Allow users to pick their timezone in the settings and then when a user loads up it will either use the default where their computer says they are or if they want to use a custom timezone they can specify different, include like military time too if thats doable
+
+    *This will have a dropdown menu with the default being the timezone they are currently in

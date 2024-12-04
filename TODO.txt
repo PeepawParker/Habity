@@ -1,0 +1,192 @@
+Unit testing figure out how to do that
+
+learn redis for caching??
+amazon recognition so no bad pictures get through
+
+I think maybe I should just make everything private besides just the main feed, you either get fed the main feed of people progressing, and if you want to click on or do anything sorry you gotta be logged in !
+
+IMPORTANT TODO I NEED TO LIKE EVERYTIME A USER LOGS IN OR LIKE RESETS THE REDUX TO RESET THE TIMEZONE AND THEN I CAN ACCESS THIS REDUX ANYWHERE TIME IS MENTIONED TO CONVERT IT INTO THE USERS TIMEZONE DEFINITELY STORE THIS IN REDUX SO THEN I HAVE TO ACCESS THIS EVERYTIME THE USER GOES ONTO THE WEBSITE, 
+
+(ALTERNATIVLY I COULD JUST PUT THIS INTO THE SETTINGS AND HAVE USERS PICK THEIR CURRENT TIMEZONE FROM THERE WHICH WOULD ALSO BE EASY BUT I THINK FOR USER EXPERIENCE THE FORMER IS MUCH BETTER)
+
+
+add error handling in all the models, meaning just if it errors throw the error 
+
+MAKE USERS BE AUTHORIZED TO GET INTO CHAT ROOMS, DONT LET USERS WHO ARENT INSIDE OF THE CHATROOM INSIDE OF IT
+
+Make sure all the necessary info is loaded before allowing a user to access the page, for all pages
+
+
+TODO FOR RIGHT NOW:  
+
+  2. If the user actually goes into a chatbox, force them to connect to a websocket, and then after they are successfully connected they can then send messages (grey it out until then)
+
+  3. This websocket will stay active until the user exits out of the application, while the websocket it active it will use the old method to update the navbar notifications, but if it isnt active it will use the alternative SSE's to update the navbar notifications
+
+  4. Make sure to implement a sort of catch for if the SSE falls offline like a check to update everything and check to make sure its not missing any messages or notifications that were picked up in the time where it lost connection. Maybe just everytime it connects have it like recheck all the data to ensure its all correct idk
+
+  5. When the new data is put in it doesn't update the current data with the new datapoints that are added, make it add these points to the array so they are listed in the graph
+
+
+  1. Make the read_table, and set it up so that when a message has been read by eveyone in the chat it deletes all the other message_ids that are equal to eachother and makes a new row where it uses this message and has the viewedByAll = true (This feature will be like snapchat I think where when you have to click on the message to see who all has seen it, it'll like come up with a small modal under the message or something listing the users that have seen it)
+
+
+
+
+
+
+
+
+
+
+
+  0. Put a message button on visitorHomePage and then from there it takes you to a message thing
+
+  1.5 Make a message requests for private users if someone dms them it shows up in message requests and doesnt notify the user unless they click into the messages tab but not on the navbar
+
+  There should be a seperate tab for messages, dont send messages to the notifications tab have a popup for the messages tab, then if the account if private make a message requests tab and then add the message button on the visitor page
+
+  2. For groupchats you need to make a couple new tables, a groups table which will just have a PK for the groupId, the groupName, and the admin of the group (so that people can kick people we will implement this later). And then make a group_members table which will just be the groupId which youd get based off the groupName, and the user_id and make the primary key a set with the group_id and user_id ex PRIMARY KEY (group_id, user_id) so then rather than having to keep track of a billion userIds, I can instead just keep track of the groupId and retrieve all the associated userIds from there
+
+  There is one thing ima have to do regaurding the groups which is make a join table to compare like the order of when the last message was sent between normal userMessages and groupchat messages
+
+  3. Go through all useEffect functions in all components and make sure you are awaiting them all
+
+
+
+
+1. Fix the all time button so that it works
+
+
+
+
+
+TODO TOMORROW TODODODODODODO:
+  6. Make it so if someone looks at someones account that hasnt been on for a while it will update the values or attempt to, but not show any toasts if it errors
+  7.rather than having a toast and stuff saying to log in and navigateing you to the login have like a modal overlay over a filler template of a userHomePage and say like Please login in order to view your home page or explore and navigate to the home page, and dont redirect to the login I want tohe login to become a modal that overlays I think
+  8.Fix the follow/unfollow function so you cant click the button until the request has gone through to prevent people from messing up the follower counts
+  9. Make the pending_status default false so you dont hav to put that in unless the account is actually private
+  10. Just make all the await functions have a pending status thing that you pass in to let the user know that they cant repress the button at the moment
+  11. Make a database table for notifications, these will stay within this table until a user directly looks at them and then they will be deleted, but until then anytime a notification event happens it will get added to this table conected by the users_id to give them a notifiaction
+  11. Figure out websockets for real time notifications and updates for stuff like direct messaging
+  12. Add the followers / following button to the visitors page
+  13. When you go to a uservisitorpage through the url that doesn't exist give the error that this user no longer exists and redirect back to the last page they were on
+  14.Make it so even if you put your userId in to search yourself it just redirects you to your home page instead of making you view your page through the visitorPage
+
+   5. Make a groupchat function so have like a group icon on the messagePage and if you click it you can search for any public user, but will have followers/follows be listed above to add to a groupchat, have it be like checkboxes in the search and every checkbox will add them to the groupchatUsers array and then when cubmit is pressed all of these users will be placed into a groupchat
+
+  6. get basic functionality for groupchat working like normal user messages
+
+  7. get read status working
+
+  8. allow users to leave
+
+  9. allow the groupchat creator to kickpeople
+
+  10. allow the groupchat leader to change who the admin is from themselves to someone else
+
+  10. Make a seperate table for message read status so then you're able to track what users have read the message in a groupchat
+
+  6. Alter the current message search bar and make it like checkbox's, if only one user is selected itll do the messageUserRoute, but if you delect multiple it will go down the groupchat route
+
+
+TODO INFINITE SCROLLING
+  1. Infinite scrolling on users you've messaged
+  2. Infinite scrolling on the past messages
+  3. Inifinite scrolling on user feeds
+  4. Infinite scrolling on followers / following 
+
+
+TODO make a button to scroll to the top of the unread messages, should be pretty easy you just set like a marker at te first message marked as unread and then it teleports you up basically
+
+With messages being redux I could potentially use it as a sort of cache so that if a user visits a message page it keeps the messages so then when new messages get sent in it is able to query and add them to the page no matter where on the page you are and then they are automatically ready
+
+TODO make a bloked table to included blocked users so you don't have to see certain users
+
+TODO in the setHabitData in Graph.jsx make it so it only retrieves data that isn't already retrieved so if you go from last 7d to last 30d instead of getting the last 30 you dont get the first 7 but then do get the next 23
+
+TODO create a streak value within the user_habits table that keeps track of the number of days you have achieved your daily goal in a row
+
+TODO Create a setting page to do stuff like change account to private
+
+TODO in the follows table add a pending column for private accounts, that will be marked as true until the user accepts them, if the user does accept them it gets turned to true, if it gets denied I think just delete the row entirely. and then I can have one private accounts check for new requests, but public accounts also check for new notifications to see new followers/likes/whatever, not really sure how this will work just yet
+
+TODO prevent sql injection do this stuff 
+  1. Input Validation: Validate and sanitize all input, including parameters in the URL, on the server-side to prevent injection attacks and other security vulnerabilities.
+
+  2. Authorization Checks: Implement proper authorization checks on the server-side to ensure that users have the necessary permissions to perform the requested actions, regardless of the parameters passed in the URL.
+
+  3. Use Tokens for Sensitive Operations: For sensitive operations or data modifications, consider using tokens (e.g., CSRF tokens) to prevent CSRF attacks, where an attacker submits unauthorized requests on behalf of the user.
+
+TODO Have a place on the userHome Page that is like the profile, like the top of your personal feed will have a picture a description, and then show the follower/following count. And if youi click it bring up a list of all your followers/follows in a modal that you can scroll through
+
+TODO fix the follow states so that there is a third option besides just follow/unfollow, a pending option for private users
+
+TODO add a bio to the users (Ill need to add stuff to the databse for this)
+
+TODO make a middleware to check if the account if private, if it is check if the user is following if they aren't decline the data and send back that the account is private
+
+TODO a notification system for follow requests, new follows, new messages, etc...
+
+TODO ill need a post table, that has like posts, the data, the picture, the time, pirvate/public, all that to help make user feeds / the global feed
+
+TODO store images using a cloud service, and store the path to retrieve that image in the sql database
+
+(TODO WHEN YOU ADD RATE LIMITS TO THE API SO THAT YOU DONT GET DDOSED BE SURE NOT TO INCLUDE THE LIKE DATAPOINTS OR RATHER THE MISSING DATES, DONT WANT A USER WHO CAME BACK AFTER A YEAR TO GET BOOTED OR NOT BE ABLE TO FILL IN ALL THE DATA IN ONE GO) disregaurd this if you figured out how to make a large list of missing dates into one sql request
+
+TODO make all requests basically go through some sort of authentication
+
+TODO allow users to pick from an assortment of graph types (bargraph, ascending, etc...)
+
+TODO allow users to click a point on the graph and input new progress
+
+TODO in the fetchHabits make it so if its only one habit being added instead of fetching all habit data and all that you just fetch the one habit and its relative data
+
+TODO Make it so users have to input a picture of them doing the activity
+
+TODO charts will only showcase the last 7 data points by default
+
+TODO make charts if there was a date skipped at any point fill in all the gaps with 0's for the progress, except for the initial data point obviously
+* The best way to do this I think is to get the latest habit datapoint for like the habit youre adding a point to and if the difference in the day is more than 0 you then got some logic to figure out what days have been skipped and all that
+
+TODO fix the inputs styling
+
+TODO new name isnt habity its now Streaks
+
+TODO later down the line when you add a button to input data dont allow them to input data until the graph has been confirmed added to the database, just grey it out and if they hover over it just do a quick message like "please wait to add data, we are still adding your habit to the database."
+
+TODO eventually make it where you have to like include a picture when you add a habit maybe, I wouldn't really worry about that on computer but on the phone when you get there run it
+
+TODO figure out how error handling works in node and react and work on that
+
+TODO maybe make habits and variables tracked lowercase in the tabe so you're not making seperate rows for stuff like Minutes, minutes, MINUTES, ...etc.
+
+TODO make the redux username persist even after a refresh
+
+TODO figure out why the way its stored in the database is not how its returned
+
+TODO if it is caching the stuff figure out how to tell if like the cache no longer exists so then you can camelcase the words so it isnt the lowercase version stored within the database have it SELECT LOWER() so then it convert  s it to lowercase no matter what
+
+TODO make sure top handle altering users follower counts / following counts and all that when a user deletes their account
+  (I think I will just have it confirm the count whenever a user follows or unfollows someone new something like that)
+
+TODO use contexts to handle loading, like if something is currently loadingextraReducers: (builder) => {
+    builder
+      .addCase(fetchData.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchData.fulfilled, (state, action) => {
+        state.data = action.payload;
+        state.loading = false;
+      })
+      .addCase(fetchData.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || 'Failed to fetch data';
+      });} 
+* It will look something like this just to get you started and for reference if needed
+
+if this were to ever get bigger you would want to find a more efficient way to store and query messag read status' but for now  just use the seperate table that stores all this information
+
+
+TODO using the following object in redux when you implement the feed stuff it can easily be used to make the ui know whether it should show a follow button (if they dont follow the user) or if it should just show the post no follow button (if they do follow the user)

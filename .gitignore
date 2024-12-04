@@ -1,0 +1,81 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+.pnpm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+./backend/.env
+./backend/env
+./backend/config.env
+*.env
+config.env
+.env.development.local
+.env.test.local
+.env.production.local
+**/config.env
+
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Operating System
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Thumbs.db:encryptable
+
+# Build/output
+/dist
+/tmp
+/out
+/.pnp
+.pnp.js
+/build
+
+# Debug logs
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+jspm_packages/
+bower_components/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# Misc
+.cache
+.parcel-cache
+.next
+.nuxt
+.vuepress/dist
+.svelte-kit
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+.serverless/
+.fusebox/
+.dynamodb/
+.tern-port
